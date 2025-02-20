@@ -51,6 +51,7 @@
         var tijolo2;
         var objetos= [-1,0];//Denomina a contagem de moedas e de corações
         var boost = false;
+        var boost2 = true;
         function preload() {
             this.load.image('background', 'assets/bg.png');
             this.load.image('alien','assets/alienigena.png'); // carrega a imagem do alienigena
@@ -120,6 +121,7 @@
 
                 this.time.delayedCall(5000, ()=>{
                     boost = false;
+                    boost2 = false;
                 });
     
             }); 
@@ -144,7 +146,7 @@
                 alien.setVelocityY(-200);
                 ativarTurbo();
             }
-            else
+            else if(teclado.up.IsUp && boost === false)
             {
                 desligarTurbo();
             }
@@ -160,7 +162,7 @@
             {
                 alien.setVelocityX(500);
             }
-            else if(teclado.right.isUp&&teclado.left.isUp&& boost === true)
+            else if(teclado.right.isUp&& boost === true)
             {
                 alien.setVelocityX(0);
             }
@@ -170,7 +172,7 @@
                 alien.setVelocityY(-500);
                 ativarTurbo();
             }
-            else
+            else if(teclado.up.IsUp && boost === true)
             {
                 desligarTurbo();
             }
